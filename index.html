@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,34 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Lista de tarefas</title>
 </head>
+
 <body>
+    <main>
+        <section class="bg">
+            <div id="lista">
+                <div class="form">
+                    <h1>Lista de Tarefas</h1>
+                    <form>
+                        <div class="inputBox">
+                            <input type="text" name="tarefa" id="tarefa" placeholder="Digite uma tarefa">
+                            <input type="button" value="+">
+                        </div>
+                        <ul class="toDo">
+                            <!-- Os dados serão adicionados posteriormente -->
+                        </ul>
+                        <div class="pending">
+                            <input type="button" value="Limpar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Subaru Tech &copy; <a href="https://www.linkedin.com/in/subarusakaguchi/">Subaru Sakaguchi</a>
+    </footer>
     <script src="./script/script.js"></script>
 </body>
+
 </html>
