@@ -41,12 +41,17 @@ function construirItem(hora) {
     let conteudoString = localStorage.getItem(`${hora}`)
     let conteudo = JSON.parse(conteudoString)
     novoLi.innerText = `${conteudo.hora} - ${conteudo.tarefa}`
+    // novoLi.setAttribute('onclick', clear(this))
     lista.appendChild(novoLi)
 }
 
 function construirTarefa(tarefa, hora) {
     this.tarefa = tarefa,
     this.hora = hora
+}
+
+function clear(element) {
+    console.log(element)
 }
 
 function cleanAll() {
