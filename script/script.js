@@ -25,7 +25,7 @@ function add() {
             console.log(chaveHoras)
             console.log(localStorage.getItem('chaveHoras'))
         } else {
-            alert('Tarefa já cadastrado neste horário, Apague antes de adicionar de novo!')
+            alert('Já existe uma tarefa cadastrada neste horário, Apague antes de adicionar de novo!')
         }
     }
 }
@@ -41,7 +41,8 @@ function construirItem(hora) {
     let conteudoString = localStorage.getItem(`${hora}`)
     let conteudo = JSON.parse(conteudoString)
     novoLi.innerText = `${conteudo.hora} - ${conteudo.tarefa}`
-    // novoLi.setAttribute('onclick', clear(this))
+    novoLi.setAttribute('id', `${hora}`)
+    novoLi.addEventListener('click', clear)
     lista.appendChild(novoLi)
 }
 
@@ -50,8 +51,17 @@ function construirTarefa(tarefa, hora) {
     this.hora = hora
 }
 
-function clear(element) {
-    console.log(element)
+var clear = function () {
+    let chaveString = localStorage.getItem('chaveHoras')
+    let chave = JSON.parse(chaveString)
+    let id = this.id
+    // let lista = document.querySelector('ul.toDo')
+    // let li = document.getElementById(`${id}`)
+    delete chave[`${id}`]
+    localStorage.setItem('chaveHoras', JSON.stringify(chave))
+    // console.log(lista)
+    // console.log(li)
+    console.log(chave)
 }
 
 function cleanAll() {
