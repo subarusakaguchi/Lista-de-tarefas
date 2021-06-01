@@ -55,12 +55,13 @@ var clear = function () {
     let chaveString = localStorage.getItem('chaveHoras')
     let chave = JSON.parse(chaveString)
     let id = this.id
-    // let lista = document.querySelector('ul.toDo')
-    // let li = document.getElementById(`${id}`)
+    let lista = document.querySelector('ul.toDo')
     delete chave[`${id}`]
     localStorage.setItem('chaveHoras', JSON.stringify(chave))
-    // console.log(lista)
-    // console.log(li)
+    lista.innerHTML = ''
+    for (let item in chave) {
+        construirItem(item)
+    }
     console.log(chave)
 }
 
