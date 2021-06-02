@@ -6,13 +6,19 @@ onload = function () {
     for (let item in chaveHoras) {
         construirItem(item)
     }
+    
 }
 
-// function contador () {
-//     let qtLi = document.getElementById('qtLi')
-//     let lista = document.querySelector('ul.toDo')
-
-// }
+var contador = function () {
+    let lista = document.querySelector('ul.toDo')
+    if (lista.childElementCount >= 0) {
+        let qtLi = document.getElementById('qtLi')
+        qtLi.innerText = `Você tem(êm) ${lista.childElementCount} tarefa(s) pendente(s)!`
+        if (lista.childElementCount == 0) {
+            qtLi.innerText = 'Parabéns! Você cumpriu todas as suas tarefas!'
+        }
+    }
+}
 
 function add() {
     let txtTarefa = document.getElementById('tarefa')
@@ -28,6 +34,8 @@ function add() {
             localStorage.setItem(`${hora}`, JSON.stringify(novaTarefa))
             construirItem(hora)
             construirChaveHora(hora)
+            console.log(hora)
+            contador()
             console.log(chaveHoras)
             console.log(localStorage.getItem('chaveHoras'))
         } else {
@@ -42,7 +50,7 @@ function construirChaveHora (hora) {
 }
 
 var hoverText = function () {
-    this.innerText = 'REMOVER TAREFA'
+    this.innerText = 'FINALIZAR TAREFA'
 }
 
 var normalText = function () {
@@ -64,6 +72,7 @@ var clear = function () {
     for (let item in chave) {
         construirItem(item)
     }
+    contador()
 }
 
 function construirItem(hora) {
@@ -87,8 +96,11 @@ function construirTarefa(tarefa, hora) {
 
 
 function cleanAll() {
+    let qtLi = document.getElementById('qtLi')
+    console.log(qtLi)
     let lista = document.querySelector('ul.toDo')
     localStorage.clear()
     chaveHoras = {}
     lista.innerHTML = ''
+    qtLi.innerText = ''
 }
