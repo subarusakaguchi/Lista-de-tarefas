@@ -1,12 +1,15 @@
 var chaveHoras = {}
 
 onload = function () {
+    let lista = document.querySelector('ul.toDo')
     chaveString = localStorage.getItem('chaveHoras')
     chaveHoras = JSON.parse(chaveString)
     for (let item in chaveHoras) {
         construirItem(item)
     }
-    
+    if (lista.childElementCount > 0) {
+        contador()
+    }
 }
 
 var contador = function () {
@@ -25,8 +28,8 @@ function add() {
     let txtHora = document.getElementById('hora')
     let tarefa = txtTarefa.value
     let hora = txtHora.value
-    if (tarefa.length < 3) {
-        alert('Erro! Digite uma tareva válida, de no mínimo 3 caracteres!')
+    if (tarefa.length < 3 || tarefa.length > 120) {
+        alert('Erro! Digite uma tarefa válida, entre 3 e 120 caracteres!')
     } else {
         let testeLocalStorage = localStorage.getItem(`${hora}`)
         if (testeLocalStorage == null) {
@@ -45,6 +48,7 @@ function add() {
 }
 
 function construirChaveHora (hora) {
+    console.log(typeof hora)
     chaveHoras[`${hora}`] = hora
     localStorage.setItem('chaveHoras', JSON.stringify(chaveHoras))
 }
@@ -96,11 +100,14 @@ function construirTarefa(tarefa, hora) {
 
 
 function cleanAll() {
+    let txtTarefa = document.getElementById('tarefa')
     let qtLi = document.getElementById('qtLi')
     console.log(qtLi)
     let lista = document.querySelector('ul.toDo')
     localStorage.clear()
     chaveHoras = {}
+    txtTarefa.value = ''
     lista.innerHTML = ''
     qtLi.innerText = ''
+    txtTarefa.focus()
 }
