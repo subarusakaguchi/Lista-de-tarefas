@@ -8,11 +8,11 @@ onload = function () {
     }
 }
 
-function contador () {
-    let qtLi = document.getElementById('qtLi')
-    let lista = document.querySelector('ul.toDo')
+// function contador () {
+//     let qtLi = document.getElementById('qtLi')
+//     let lista = document.querySelector('ul.toDo')
 
-}
+// }
 
 function add() {
     let txtTarefa = document.getElementById('tarefa')
@@ -41,20 +41,15 @@ function construirChaveHora (hora) {
     localStorage.setItem('chaveHoras', JSON.stringify(chaveHoras))
 }
 
-function construirItem(hora) {
-    let lista = document.querySelector('ul.toDo')
-    let novoLi = document.createElement('li')
-    let conteudoString = localStorage.getItem(`${hora}`)
-    let conteudo = JSON.parse(conteudoString)
-    novoLi.innerText = `${conteudo.hora} - ${conteudo.tarefa}`
-    novoLi.setAttribute('id', `${hora}`)
-    novoLi.addEventListener('click', clear)
-    lista.appendChild(novoLi)
+var hoverText = function () {
+    this.innerText = 'REMOVER TAREFA'
 }
 
-function construirTarefa(tarefa, hora) {
-    this.tarefa = tarefa,
-    this.hora = hora
+var normalText = function () {
+    let hora = this.id
+    let conteudoString = localStorage.getItem(`${hora}`)
+    let conteudo = JSON.parse(conteudoString)
+    this.innerText = `${conteudo.hora} - ${conteudo.tarefa}`
 }
 
 var clear = function () {
@@ -70,6 +65,26 @@ var clear = function () {
         construirItem(item)
     }
 }
+
+function construirItem(hora) {
+    let lista = document.querySelector('ul.toDo')
+    let novoLi = document.createElement('li')
+    let conteudoString = localStorage.getItem(`${hora}`)
+    let conteudo = JSON.parse(conteudoString)
+    novoLi.innerText = `${conteudo.hora} - ${conteudo.tarefa}`
+    novoLi.setAttribute('id', `${hora}`)
+    novoLi.addEventListener('click', clear)
+    novoLi.addEventListener('mouseover', hoverText)
+    novoLi.addEventListener('mouseleave', normalText)
+    lista.appendChild(novoLi)
+}
+
+function construirTarefa(tarefa, hora) {
+    this.tarefa = tarefa,
+    this.hora = hora
+}
+
+
 
 function cleanAll() {
     let lista = document.querySelector('ul.toDo')
