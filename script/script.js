@@ -8,6 +8,12 @@ onload = function () {
     }
 }
 
+function contador () {
+    let qtLi = document.getElementById('qtLi')
+    let lista = document.querySelector('ul.toDo')
+
+}
+
 function add() {
     let txtTarefa = document.getElementById('tarefa')
     let txtHora = document.getElementById('hora')
@@ -58,17 +64,16 @@ var clear = function () {
     let lista = document.querySelector('ul.toDo')
     delete chave[`${id}`]
     localStorage.setItem('chaveHoras', JSON.stringify(chave))
+    localStorage.removeItem(`${id}`)
     lista.innerHTML = ''
     for (let item in chave) {
         construirItem(item)
     }
-    console.log(chave)
 }
 
 function cleanAll() {
     let lista = document.querySelector('ul.toDo')
     localStorage.clear()
     chaveHoras = {}
-    console.log(chaveHoras)
     lista.innerHTML = ''
 }

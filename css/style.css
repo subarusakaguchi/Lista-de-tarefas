@@ -13,6 +13,13 @@ h1 {
     margin-bottom: 10px;
 }
 
+p {
+    max-width: 20rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: red;
+}
+
 .bg {
     background-image: url(../images/fundo-tarefa-original.jpg);
     background-repeat: no-repeat;
@@ -40,6 +47,10 @@ li {
     padding: 10px;
     border-radius: 20px;
     list-style: none;
+}
+
+li:hover {
+    cursor: pointer;
 }
 
 .inputBox {
