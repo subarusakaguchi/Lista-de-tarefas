@@ -94,3 +94,20 @@ footer a {
 footer a:hover {
     color: #310008;
 }
+
+@media only screen and (max-width: 800px) {
+    .bg {
+        padding-top: 200px;
+        background-position: center;
+        height: 1000px;
+    }
+
+    #lista {
+        background-color: rgba(255, 255, 255, 0.548);
+        border-radius: 20px;
+        padding: 20px 10px 20px 10px;
+        width: 90%;
+        height: auto;
+        margin: auto;
+    }
+}
