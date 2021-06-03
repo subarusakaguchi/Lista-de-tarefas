@@ -9,6 +9,8 @@ onload = function () {
     }
     if (lista.childElementCount > 0) {
         contador()
+    } else {
+        cleanAll()
     }
 }
 
@@ -37,10 +39,7 @@ function add() {
             localStorage.setItem(`${hora}`, JSON.stringify(novaTarefa))
             construirItem(hora)
             construirChaveHora(hora)
-            console.log(hora)
             contador()
-            console.log(chaveHoras)
-            console.log(localStorage.getItem('chaveHoras'))
         } else {
             alert('Já existe uma tarefa cadastrada neste horário, Apague antes de adicionar de novo!')
         }
@@ -48,7 +47,6 @@ function add() {
 }
 
 function construirChaveHora (hora) {
-    console.log(typeof hora)
     chaveHoras[`${hora}`] = hora
     localStorage.setItem('chaveHoras', JSON.stringify(chaveHoras))
 }
@@ -97,12 +95,9 @@ function construirTarefa(tarefa, hora) {
     this.hora = hora
 }
 
-
-
 function cleanAll() {
     let txtTarefa = document.getElementById('tarefa')
     let qtLi = document.getElementById('qtLi')
-    console.log(qtLi)
     let lista = document.querySelector('ul.toDo')
     localStorage.clear()
     chaveHoras = {}
