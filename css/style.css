@@ -97,9 +97,10 @@ footer a:hover {
 
 @media only screen and (max-width: 800px) {
     .bg {
-        padding-top: 200px;
+        padding-top: 80px;
+        padding-bottom: 80px;
         background-position: center;
-        height: 1000px;
+        height: 100%
     }
 
     #lista {
@@ -109,5 +110,9 @@ footer a:hover {
         width: 90%;
         height: auto;
         margin: auto;
+    }
+
+    .btn {
+        padding: 10px 20px 10px 20px;
     }
 }
