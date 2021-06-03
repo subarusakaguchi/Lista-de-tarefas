@@ -1,4 +1,27 @@
 var chaveHoras = {}
+var inputTxt = document.getElementById('tarefa')
+inputTxt.addEventListener('keyup', function (event) {
+    if (dispatchForCode(event) === 13) {
+        event.preventDefault()
+        console.log('teste')
+        let btn = document.getElementById('btnAdd')
+        btn.click()
+    }
+})
+
+var dispatchForCode = function(event) {
+    var code;
+  
+    if (event.key !== undefined) {
+      code = event.key;
+    } else if (event.keyIdentifier !== undefined) {
+      code = event.keyIdentifier;
+    } else if (event.keyCode !== undefined) {
+      code = event.keyCode;
+    }
+  
+    return code
+  };
 
 onload = function () {
     let lista = document.querySelector('ul.toDo')
